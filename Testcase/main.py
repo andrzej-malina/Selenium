@@ -16,7 +16,6 @@ class PythonOrgSearch(unittest.TestCase):
 
     #funkcja sprawdzająca czy tytuł strony jest ok
     def test1_title(self):
-        print('test_title')
         mainPage = page.MainPage(self.driver)
         assert mainPage.is_title_matches()
 
@@ -36,9 +35,12 @@ class PythonOrgSearch(unittest.TestCase):
         search_result_page = page.SearchResultPage(self.driver)
         assert search_result_page.no_results_found()
 
-    #funkcja sprawdzająca kilknięcie w ikonę network
+    #funkcja sprawdzająca kilknięcie w ikonę NETWORK
     def test4_click_network(self):
         mainPage = page.MainPage(self.driver)
+        mainPage.click_network_button()
+        network_page = page.NetworkPage(self.driver)
+        assert network_page.is_under_construction_found()
 
     #funkcja na zakończenie, żeby "posprzątać"
     def clean_End(self):

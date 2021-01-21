@@ -20,6 +20,10 @@ class MainPage(BasePage):
         element = self.driver.find_element(*MainPageLocators.SEARCH_BUTTON)
         element.click()
 
+    def click_network_button(self):
+        element = self.driver.find_element(*MainPageLocators.NETWORK_BUTTON)
+        element.click()
+
 class SearchResultPage(BasePage):
 
     def is_results_found(self):
@@ -27,3 +31,8 @@ class SearchResultPage(BasePage):
 
     def no_results_found(self):
         return "No results found." in self.driver.page_source
+
+class NetworkPage(BasePage):
+
+    def is_under_construction_found(self):
+        return "UNDER CONSTRUCTION" in self.driver.page_source

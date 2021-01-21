@@ -4,10 +4,10 @@ from selenium.webdriver.common.by import By
 
 class MainPageLocators(object):
     SEARCH_BUTTON = (By.CSS_SELECTOR, "input[placeholder='What you search for...']")
-    NETWORK_BUTTON = (By.CSS_SELECTOR, "input[placeholder='What you search for...']")
-    PROFILE_BUTTON = 
-    MOVIES_BUTTON =
-    PUBLICATIONS_BUTTON =
+    NETWORK_BUTTON = (By.PARTIAL_LINK_TEXT, "network")
+    PROFILE_BUTTON = (By.PARTIAL_LINK_TEXT, "profile")
+    MOVIES_BUTTON = (By.PARTIAL_LINK_TEXT, "movies")
+    PUBLICATIONS_BUTTON = (By.PARTIAL_LINK_TEXT, "publications")
 
 
 
