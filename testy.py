@@ -12,13 +12,13 @@ driver = webdriver.Chrome('C:/Users/ajankowski/Downloads/chromedriver')
 driver.implicitly_wait(30)
 driver.set_page_load_timeout(50)
 
-driver.get('http://brainiverse.cktech.eu/network')
+driver.get('http://brainiverse.cktech.eu/search')
 driver.implicitly_wait(3)
 print(driver.title)
 
 element = driver.find_element(*(By.PARTIAL_LINK_TEXT, "network"))
 element.click()
-
+time.sleep(5)
 page = driver.page_source
 bool = "UNDER CONSTRUCTION" in page
 print (bool)

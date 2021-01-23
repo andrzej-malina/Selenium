@@ -3,6 +3,7 @@
 import unittest
 from selenium import webdriver
 import page
+import time
 
 class PythonOrgSearch(unittest.TestCase):
 
@@ -32,6 +33,7 @@ class PythonOrgSearch(unittest.TestCase):
         mainPage = page.MainPage(self.driver)
         mainPage.search_text_element = '$%^&*(()_&*('
         mainPage.click_search_button()
+        time.sleep(2)
         search_result_page = page.SearchResultPage(self.driver)
         assert search_result_page.no_results_found()
 
@@ -39,8 +41,29 @@ class PythonOrgSearch(unittest.TestCase):
     def test4_click_network(self):
         mainPage = page.MainPage(self.driver)
         mainPage.click_network_button()
-        network_page = page.NetworkPage(self.driver)
-        assert network_page.is_under_construction_found()
+        time.sleep(2)
+        assert mainPage.is_under_construction_found()
+
+    #funkcja sprawdzająca kilknięcie w ikonę PROFILE
+    def test5_click_profile(self):
+        mainPage = page.MainPage(self.driver)
+        mainPage.click_profile_button()
+        time.sleep(2)
+        assert mainPage.is_under_construction_found()
+
+    # funkcja sprawdzająca kilknięcie w ikonę MOVIES
+    def test6_click_movies(self):
+        mainPage = page.MainPage(self.driver)
+        mainPage.click_movies_button()
+        time.sleep(2)
+        assert mainPage.is_under_construction_found()
+
+    # funkcja sprawdzająca kilknięcie w ikonę PUBLICATIONS
+    def test7_click_publications(self):
+        mainPage = page.MainPage(self.driver)
+        mainPage.click_publications_button()
+        time.sleep(2)
+        assert mainPage.is_under_construction_found()
 
     #funkcja na zakończenie, żeby "posprzątać"
     def clean_End(self):
