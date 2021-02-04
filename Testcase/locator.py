@@ -8,8 +8,4 @@ class MainPageLocators(object):
     PROFILE_BUTTON = (By.PARTIAL_LINK_TEXT, "profile")
     MOVIES_BUTTON = (By.PARTIAL_LINK_TEXT, "movies")
     PUBLICATIONS_BUTTON = (By.PARTIAL_LINK_TEXT, "publications")
-
-
-
-class SearchResultsPageLocators(object):
-    pass
+    ACTIVITIES_BUTTON = (By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[1]")

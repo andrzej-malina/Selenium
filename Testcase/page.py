@@ -1,6 +1,7 @@
-#klasa do definiowania testów
+# klasa do definiowania testów
 from locator import *
 from element import BasePageElement
+
 
 class SearchTextElement(BasePageElement):
     locator = "input[placeholder='What you search for...']"
@@ -39,6 +40,7 @@ class MainPage(BasePage):
         element = self.driver.find_element(*MainPageLocators.PUBLICATIONS_BUTTON)
         element.click()
 
+
 class SearchResultPage(BasePage):
 
     def is_results_found(self):
@@ -46,4 +48,3 @@ class SearchResultPage(BasePage):
 
     def no_results_found(self):
         return "No results found." in self.driver.page_source
-

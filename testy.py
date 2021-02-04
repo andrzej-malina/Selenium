@@ -16,12 +16,20 @@ driver.get('http://brainiverse.cktech.eu/search')
 driver.implicitly_wait(3)
 print(driver.title)
 
-element = driver.find_element(*(By.PARTIAL_LINK_TEXT, "network"))
+search_page = driver.find_element(By.CSS_SELECTOR, "input[placeholder='What you search for...']")
+search_page.clear()
+search_page.send_keys('covid')
+search_button = driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form/div[2]/button")
+search_button.click()
+time.sleep(2)
+
+element = driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[1]")
 element.click()
-time.sleep(5)
-page = driver.page_source
-bool = "UNDER CONSTRUCTION" in page
-print (bool)
+time.sleep(2)
+
+check = element.get_attribute("class")
+
+print (check == 'ng-star-inserted')
 
 time.sleep(2)
 
