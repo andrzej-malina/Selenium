@@ -13,6 +13,12 @@ class PythonOrgSearch(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome('C:/Users/ajankowski/Downloads/chromedriver')
         self.driver.get('http://brainiverse.cktech.eu/search')
+        search_field = self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='What you search for...']")
+        search_field.clear()
+        search_field.send_keys('covid')
+        search_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form/div[2]/button")
+        search_button.click()
+        time.sleep(2)
 
     # funckcja o nazwie zaczynającej się na test, będzie wykonywana automatycznie,
     # bo dziedziczymy od unittest.TestCase
@@ -23,23 +29,17 @@ class PythonOrgSearch(unittest.TestCase):
 
     # funkcja sprawdzająca czy są wyniki wyszukiwania dla zapytania 'covid'
     def test2_search(self):
-        search_field = self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='What you search for...']")
-        search_field.clear()
-        search_field.send_keys('covid')
-        search_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form/div[2]/button")
-        search_button.click()
-        time.sleep(3)
         assert "No results found." not in self.driver.page_source
 
-    # funkcja sprawdzająca czy są wyniki wyszukiwania dla bezsensownego zapytania '$%^&*(()_&*('
+    # funkcja sprawdzająca czy są wyniki wyszukiwania dla bezsensownego zapytania 'zapytanie o jakies glupoty'
     def test3_search_stupid(self):
         search_field = self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='What you search for...']")
         search_field.clear()
-        search_field.send_keys('$%^&*(()_&*(')
+        search_field.send_keys('zapytanie o jakies glupoty')
         search_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form/div[2]/button")
         search_button.click()
         time.sleep(3)
-        assert "No results found." in self.driver.page_source
+        assert "Covid" not in self.driver.page_source
 
     # funkcja sprawdzająca kilknięcie w ikonę NETWORK
     def test4_click_network(self):
@@ -71,13 +71,6 @@ class PythonOrgSearch(unittest.TestCase):
 
     # funkcja do sprawdzenia przycisku activities
     def test8_activities_button(self):
-        search_field = self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='What you search for...']")
-        search_field.clear()
-        search_field.send_keys('covid')
-        search_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form/div[2]/button")
-        search_button.click()
-        time.sleep(2)
-
         activities_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[1]")
         activities_button.click()
         time.sleep(2)
@@ -85,13 +78,6 @@ class PythonOrgSearch(unittest.TestCase):
         assert activities_button.get_attribute("class") == 'ng-star-inserted'
 
     def test9_anatomy_button(self):
-        search_field = self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='What you search for...']")
-        search_field.clear()
-        search_field.send_keys('covid')
-        search_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form/div[2]/button")
-        search_button.click()
-        time.sleep(2)
-
         anatomy_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[2]")
         anatomy_button.click()
         time.sleep(2)
@@ -99,13 +85,6 @@ class PythonOrgSearch(unittest.TestCase):
         assert anatomy_button.get_attribute("class") == 'ng-star-inserted'
 
     def test10_chemicals_button(self):
-        search_field = self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='What you search for...']")
-        search_field.clear()
-        search_field.send_keys('covid')
-        search_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form/div[2]/button")
-        search_button.click()
-        time.sleep(2)
-
         chemicals_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[3]")
         chemicals_button.click()
         time.sleep(2)
@@ -113,13 +92,6 @@ class PythonOrgSearch(unittest.TestCase):
         assert chemicals_button.get_attribute("class") == 'ng-star-inserted'
 
     def test11_concepts_button(self):
-        search_field = self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='What you search for...']")
-        search_field.clear()
-        search_field.send_keys('covid')
-        search_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form/div[2]/button")
-        search_button.click()
-        time.sleep(2)
-
         concepts_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[4]")
         concepts_button.click()
         time.sleep(2)
@@ -127,13 +99,6 @@ class PythonOrgSearch(unittest.TestCase):
         assert concepts_button.get_attribute("class") == 'ng-star-inserted'
 
     def test12_devices_button(self):
-        search_field = self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='What you search for...']")
-        search_field.clear()
-        search_field.send_keys('covid')
-        search_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form/div[2]/button")
-        search_button.click()
-        time.sleep(2)
-
         devices_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[5]")
         devices_button.click()
         time.sleep(2)
@@ -141,13 +106,6 @@ class PythonOrgSearch(unittest.TestCase):
         assert devices_button.get_attribute("class") == 'ng-star-inserted'
 
     def test13_disorders_button(self):
-        search_field = self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='What you search for...']")
-        search_field.clear()
-        search_field.send_keys('covid')
-        search_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form/div[2]/button")
-        search_button.click()
-        time.sleep(2)
-
         disorders_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[6]")
         disorders_button.click()
         time.sleep(2)
@@ -155,13 +113,6 @@ class PythonOrgSearch(unittest.TestCase):
         assert disorders_button.get_attribute("class") == 'ng-star-inserted'
 
     def test14_geo_button(self):
-        search_field = self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='What you search for...']")
-        search_field.clear()
-        search_field.send_keys('covid')
-        search_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form/div[2]/button")
-        search_button.click()
-        time.sleep(2)
-
         geo_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[7]")
         geo_button.click()
         time.sleep(2)
@@ -170,18 +121,57 @@ class PythonOrgSearch(unittest.TestCase):
 
 
     def test15_living_button(self):
-        search_field = self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='What you search for...']")
-        search_field.clear()
-        search_field.send_keys('covid')
-        search_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form/div[2]/button")
-        search_button.click()
-        time.sleep(2)
-
         living_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[8]")
         living_button.click()
         time.sleep(2)
 
         assert living_button.get_attribute("class") == 'ng-star-inserted'
+
+    def test16_objects_button(self):
+        objects_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[9]")
+        objects_button.click()
+        time.sleep(2)
+
+        assert objects_button.get_attribute("class") == 'ng-star-inserted'
+
+    def test17_organizations_button(self):
+        organizations_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[10]")
+        organizations_button.click()
+        time.sleep(2)
+
+        assert organizations_button.get_attribute("class") == 'ng-star-inserted'
+
+    def test18_phenomena_button(self):
+        phenomena_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[11]")
+        phenomena_button.click()
+        time.sleep(2)
+
+        assert phenomena_button.get_attribute("class") == 'ng-star-inserted'
+
+    def test19_psychology_button(self):
+        psychology_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[12]")
+        psychology_button.click()
+        time.sleep(2)
+
+        assert psychology_button.get_attribute("class") == 'ng-star-inserted'
+
+    def test20_procedures_button(self):
+        procedures_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[13]")
+        procedures_button.click()
+        time.sleep(2)
+
+        assert procedures_button.get_attribute("class") == 'ng-star-inserted'
+
+    def test21_showall_button(self):
+        procedures_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[13]")
+        procedures_button.click()
+        time.sleep(2)
+
+        showall_button = self.driver.find_element(By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/button")
+        showall_button.click()
+        time.sleep(2)
+
+        assert procedures_button.get_attribute("class") == 'ng-star-inserted checked'
 
     # funkcja na zakończenie, żeby "posprzątać"
     def clean_End(self):
