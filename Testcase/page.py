@@ -40,6 +40,9 @@ class MainPage(BasePage):
         element = self.driver.find_element(*MainPageLocators.PUBLICATIONS_BUTTON)
         element.click()
 
+    def click_activities_button(self):
+        element = self.driver.find_element(*MainPageLocators.ACTIVITIES_BUTTON)
+        element.click()
 
 class SearchResultPage(BasePage):
 

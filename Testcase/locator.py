@@ -24,3 +24,9 @@ class MainPageLocators(object):
     PHYSIOLOGY_BUTTON = (By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[12]")
     PROCEDURES_BUTTON = (By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/label[13]")
     SHOWALL_BUTTON = (By.XPATH, "/html/body/app-root/app-index/main/app-index/form[2]/button")
+    SECOND_PAGE_BUTTON = (By.XPATH, "/html/body/app-root/app-index/main/app-index/div/a[1]")
+    THIRD_PAGE_BUTTON = (By.XPATH, "/html/body/app-root/app-index/main/app-index/div/a[3]")
+    FORTH_PAGE_BUTTON = (By.XPATH, "/html/body/app-root/app-index/main/app-index/div/a[4]")
+    FIFTH_PAGE_BUTTON = (By.XPATH, "/html/body/app-root/app-index/main/app-index/div/a[4]")
+    CURRENT_PAGE_BUTTON = (By.XPATH, "/html/body/app-root/app-index/main/app-index/div/span[2]")
+
